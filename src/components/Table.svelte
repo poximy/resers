@@ -1,17 +1,25 @@
 <script lang="ts">
-  let cells: number[] = Array(10).fill(0);
+  export let average: number;
 
-  $: average = cells.reduce((x, y) => x + y) / 10
+  let cells: number[] = Array(10).fill(0);
+  $: average = cells.reduce((x, y) => x + y) / 10;
 </script>
 
-<ul>
-  {#each cells as _, index}
-    <li>
+<tr>
+  {#each Array(5) as _, index}
+    <td>
       <input type="number" bind:value={cells[index]} />
-    </li>
+    </td>
   {/each}
-</ul>
-<p>Average: {average}</p>
+  <td>{average}</td>
+</tr>
+<tr>
+  {#each Array(5) as _, index}
+    <td>
+      <input type="number" bind:value={cells[index + 5]} />
+    </td>
+  {/each}
+</tr>
 
 <style>
 </style>
