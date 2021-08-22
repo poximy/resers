@@ -2,6 +2,15 @@
   import Table from "./components/Table.svelte";
 
   let tableAverages: number[] = Array(1).fill(0);
+
+  const createTable = () => {
+    tableAverages = [...tableAverages, 0];
+  };
+
+  const deleteTable = () => {
+    tableAverages.pop();
+    tableAverages = tableAverages;
+  };
 </script>
 
 <main>
@@ -19,6 +28,11 @@
     </tbody>
   </table>
 </main>
+
+<div class="buttons">
+  <button on:click={createTable}>➕</button>
+  <button on:click={deleteTable}>➖</button>
+</div>
 
 <style>
 </style>
