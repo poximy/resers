@@ -1,6 +1,11 @@
 <script lang="ts">
   let tables: number[][] = [Array(10).fill(0)];
 
+  const calcTableAverage = (cellValues: number[]) => {
+    const total = cellValues.reduce((x, y) => x + y);
+    return total / 10
+  }
+
   const createTable = () => {
     tables = [...tables, Array(10).fill(0)];
   };
@@ -26,7 +31,7 @@
             <input type="number" bind:value={tables[tableNumber][cellNumber]} />
           </td>
         {/each}
-        <td rowspan="2">{tables[tableNumber].reduce((x, y) => x + y) / 10}</td>
+        <td rowspan="2">{calcTableAverage(tables[tableNumber])}</td>
       </tr>
       <tr>
         {#each Array(5) as _, cellNumber}
