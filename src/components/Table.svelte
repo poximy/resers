@@ -32,12 +32,17 @@
           {#each Array(5) as _, cellNumber}
             <td>
               <input
+                class:blue-row={tableNumber % 2}
                 type="number"
                 bind:value={tables[tableNumber][cellNumber]}
+                placeholder="0"
               />
             </td>
           {/each}
-          <td rowspan="2" class="average bottom"
+          <td
+            rowspan="2"
+            class="average bottom"
+            class:blue-row={tableNumber % 2}
             >{calcTableAverage(tables[tableNumber])}</td
           >
         </tr>
@@ -45,6 +50,8 @@
           {#each Array(5) as _, cellNumber}
             <td>
               <input
+                class:blue-row={tableNumber % 2}
+                placeholder="0"
                 type="number"
                 bind:value={tables[tableNumber][cellNumber + 5]}
               />
@@ -73,14 +80,23 @@
     text-align: center;
     font-size: 1.5em;
     font-family: var(--primary-font);
-    padding: 0.25em 0.5em;
+    padding: 0 0.25em;
   }
 
   table {
     display: block;
     border-collapse: collapse;
-    border: .25em solid var(--color-blue);
+    border: 0.25em solid var(--color-blue);
     border-radius: 1em;
+  }
+
+  .blue-row {
+    background-color: var(--color-blue);
+    color: var(--color-dark);
+  }
+
+  .blue-row::placeholder {
+    color: var(--color-dark);
   }
 
   input {
@@ -92,6 +108,7 @@
     width: 2.5em;
     height: 2.5em;
     outline: none;
+    padding: 0.25em;
   }
 
   input::-webkit-outer-spin-button,
@@ -100,17 +117,21 @@
     margin: 0;
   }
 
-  /* Firefox */
   input[type="number"] {
     -moz-appearance: textfield;
   }
 
   input::placeholder {
-    color: var(--color-light)
+    color: var(--color-light);
   }
 
-  input:focus::placeholder{
+  input:focus::placeholder {
     color: transparent;
+    border-bottom: 0.15em solid var(--color-blue);
+  }
+
+  .blue-row:focus::placeholder {
+    border-bottom: 0.15em solid var(--color-dark);
   }
 
   .buttons {
