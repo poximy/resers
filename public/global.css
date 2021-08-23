@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+:root {
+  --primary-font: "Nunito", sans-serif;
+  --seconday-font: "Nunito", sans-serif;
+
+  --color-dark: #31353c;
+  --color-light: #f5eade;
+
+  --color-green: #21a280;
+  --color-blue: #3bc2c7;
+  --color-red: #e04941;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+html {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
