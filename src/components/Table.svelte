@@ -3,8 +3,8 @@
 
   const calcTableAverage = (cellValues: number[]) => {
     const total = cellValues.reduce((x, y) => x + y);
-    return total / 10
-  }
+    return total / 10;
+  };
 
   const createTable = () => {
     tables = [...tables, Array(10).fill(0)];
