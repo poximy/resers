@@ -11,8 +11,10 @@
   };
 
   const deleteTable = () => {
-    tables.pop();
-    tables = tables;
+    if (tables.length > 1) {
+      tables.pop();
+      tables = tables;
+    }
   };
 </script>
 
