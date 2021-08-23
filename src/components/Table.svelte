@@ -6,6 +6,16 @@
     return total / 10;
   };
 
+  const calcLotAverage = (tables: number[][], index: number) => {
+    let lotAverage = 0;
+
+    for (let i = 0; i < index + 1; i++) {
+      console.log(calcTableAverage(tables[i]));
+      lotAverage += calcTableAverage(tables[i]) / (index + 1);
+    }
+    return lotAverage.toFixed(1);
+  };
+
   const createTable = () => {
     tables = [...tables, Array(10).fill(null)];
   };
@@ -23,7 +33,8 @@
     <thead>
       <tr>
         <th colspan="5">weights</th>
-        <th>average</th>
+        <th>avg</th>
+        <th>lot</th>
       </tr>
     </thead>
     <tbody>
@@ -44,6 +55,9 @@
             class="average bottom"
             class:blue-row={tableNumber % 2}
             >{calcTableAverage(tables[tableNumber])}</td
+          >
+          <td class:blue-row={tableNumber % 2} rowspan="2" class="average"
+            >{calcLotAverage(tables, tableNumber)}</td
           >
         </tr>
         <tr>
