@@ -1,5 +1,5 @@
 <script lang="ts">
-  let tables: number[][] = [Array(10).fill(0)];
+  let tables: number[][] = [Array(10).fill(null)];
 
   const calcTableAverage = (cellValues: number[]) => {
     const total = cellValues.reduce((x, y) => x + y);
@@ -7,7 +7,7 @@
   };
 
   const createTable = () => {
-    tables = [...tables, Array(10).fill(0)];
+    tables = [...tables, Array(10).fill(null)];
   };
 
   const deleteTable = () => {
@@ -79,14 +79,14 @@
   table {
     display: block;
     border-collapse: collapse;
-    border: 3px solid var(--color-blue);
-    border-radius: 0.5em;
+    border: .25em solid var(--color-blue);
+    border-radius: 1em;
   }
 
   input {
     font-size: 1.25em;
     font-family: var(--seconday-font);
-    background-color: var(--color-dark);
+    background-color: transparent;
     color: var(--color-light);
     text-align: center;
     width: 2.5em;
@@ -105,11 +105,20 @@
     -moz-appearance: textfield;
   }
 
+  input::placeholder {
+    color: var(--color-light)
+  }
+
+  input:focus::placeholder{
+    color: transparent;
+  }
+
   .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
 
   button {
